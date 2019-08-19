@@ -1,12 +1,10 @@
 @import '~react-input-range/src/scss/input-range/_input-range-variables.scss';
-
-body {
-  padding: 100px;
-}
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap');
 
 .money-button {
   $slider-size: 60px;
   $clearBlue: rgb(38, 105, 255);
+  $gray: rgb(79, 95, 109);
 
   width: 182px;
   height: 42px;
@@ -17,12 +15,16 @@ body {
   display: flex;
   justify-content: flex-start;
   position: relative;
+  background-color: white;
+  background-clip: content-box;
 
   &.success-theme {
+    background-color: rgb(109, 193, 16);
     border-color: rgba(109, 193, 16, 0.4);
   }
 
   &.error-theme {
+    background-color: rgb(245, 166, 35);
     border-color: rgba(245, 166, 35, 0.4);
   }
 
@@ -42,6 +44,7 @@ body {
     .value-input-currency {
       font-family: 'Roboto', sans-serif;
       font-size: 21px;
+      color: $gray;
     }
 
     .value-input {
@@ -50,6 +53,7 @@ body {
       font-weight: bold;
       height: 100%;
       width: 40%;
+      color: $gray;
 
       background: transparent;
       border: 0;
@@ -94,7 +98,8 @@ body {
     border: none !important;
     width: $slider-size;
     height: $slider-size;
-    top: -42px;
+    top: -41px;
+    left: -1px;
     position: absolute;
     background-image: url('./relay.png');
     background-size: 70%;
@@ -149,7 +154,9 @@ body {
   }
 
   .empty-theme {
-    opacity: 0.5;
+    .input-range__slider {
+      opacity: 0.5;
+    }
   }
 
   .loading-theme {

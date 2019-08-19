@@ -5,6 +5,7 @@ import postcss from 'rollup-plugin-postcss'
 import resolve from 'rollup-plugin-node-resolve'
 import url from 'rollup-plugin-url'
 import svgr from '@svgr/rollup'
+import urlPostcss from 'postcss-url'
 
 import pkg from './package.json'
 
@@ -25,7 +26,7 @@ export default {
   plugins: [
     external(),
     postcss({
-      modules: true
+      plugins: [ urlPostcss({ url: 'inline' }) ]
     }),
     url(),
     svgr(),

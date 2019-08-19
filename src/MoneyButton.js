@@ -1,7 +1,9 @@
 import React, { PureComponent } from 'react';
-import './App.scss';
 import InputRange from 'react-input-range';
+
+import './App.scss';
 import 'react-input-range/lib/css/index.css';
+
 
 class MoneyButton extends PureComponent {
   static defaultProps = {
@@ -14,7 +16,7 @@ class MoneyButton extends PureComponent {
     onSlideComplete: () => {},
     onChange: () => {},
     currency: '',
-  }
+  };
 
   constructor(props) {
     super(props);
@@ -25,7 +27,6 @@ class MoneyButton extends PureComponent {
       inputValue: '',
     };
   }
-
 
   stateRenderMap = {
     loading: () => {
@@ -40,10 +41,10 @@ class MoneyButton extends PureComponent {
       const successValue = this.state.inputValue;
 
       return (
-        <>
+        <React.Fragment>
           <div className="success-title">{successTitle}</div>
           <div className="success-title-value">{successValue}</div>
-        </>
+        </React.Fragment>
       );
     },
     error: () => {
@@ -55,7 +56,7 @@ class MoneyButton extends PureComponent {
       const currencyName = 'HK$';
 
       return (
-        <>
+        <React.Fragment>
           <div className="value-input-currency">{currencyName}</div>
           <input
             type="numebr"
@@ -63,16 +64,16 @@ class MoneyButton extends PureComponent {
             value={this.state.inputValue}
             onChange={e => this.setState({ inputValue: e.target.value })}
           />
-        </>
+        </React.Fragment>
       );
     },
   };
 
-  onSliderChange = (value) => {
-    this.setState({ value })
-  }
+  onSliderChange = value => {
+    this.setState({ value });
+  };
 
-  getTheme () {
+  getTheme() {
     const { loading, success, error } = this.props;
 
     if (loading) {
@@ -92,7 +93,7 @@ class MoneyButton extends PureComponent {
     }
 
     if (!this.state.inputValue) {
-      return 'empty-theme'
+      return 'empty-theme';
     }
 
     return '';
@@ -117,6 +118,7 @@ class MoneyButton extends PureComponent {
   }
 
   paidProccess = () => {
+    this.props.onChangeComplete(this.state.value);
     if (this.state.value >= 9.5) {
       setTimeout(() => this.setState({ value: 0 }), 10);
       return;
@@ -131,7 +133,7 @@ class MoneyButton extends PureComponent {
   }
 
   renderSlider() {
-    const { loading, success, error } = this.props
+    const { loading, success, error } = this.props;
     const isDisabled = loading || success || error;
     const theme = this.getTheme();
 
@@ -142,7 +144,7 @@ class MoneyButton extends PureComponent {
           minValue={0}
           formatLabel={() => ''}
           value={this.state.value}
-          onChange={this.onSliderChange}
+          onChange={value => this.setState({ value })}
           onChangeComplete={this.paidProccess}
           draggableTrack={true}
           step={0.1}
