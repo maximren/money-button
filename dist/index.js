@@ -4,7 +4,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var React = require('react');
 var React__default = _interopDefault(React);
-var _propTypes = _interopDefault(require('prop-types'));
+var PropTypes = _interopDefault(require('prop-types'));
 
 function unwrapExports (x) {
 	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
@@ -123,7 +123,7 @@ function captialize(string) {
   return string.charAt(0).toUpperCase() + string.slice(1);
 }
 module.exports = exports["default"];
-//# sourceMappingURL=captialize.js.map
+
 });
 
 unwrapExports(captialize_1);
@@ -146,7 +146,7 @@ function clamp(value, min, max) {
   return Math.min(Math.max(value, min), max);
 }
 module.exports = exports["default"];
-//# sourceMappingURL=clamp.js.map
+
 });
 
 unwrapExports(clamp_1);
@@ -171,7 +171,7 @@ function distanceTo(pointA, pointB) {
   return Math.sqrt(xDiff + yDiff);
 }
 module.exports = exports["default"];
-//# sourceMappingURL=distance-to.js.map
+
 });
 
 unwrapExports(distanceTo_1);
@@ -192,7 +192,7 @@ function isDefined(value) {
   return value !== undefined && value !== null;
 }
 module.exports = exports["default"];
-//# sourceMappingURL=is-defined.js.map
+
 });
 
 unwrapExports(isDefined_1);
@@ -213,7 +213,7 @@ function isNumber(value) {
   return typeof value === 'number';
 }
 module.exports = exports['default'];
-//# sourceMappingURL=is-number.js.map
+
 });
 
 unwrapExports(isNumber_1);
@@ -237,7 +237,7 @@ function isObject(value) {
   return value !== null && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) === 'object';
 }
 module.exports = exports['default'];
-//# sourceMappingURL=is-object.js.map
+
 });
 
 unwrapExports(isObject_1);
@@ -259,7 +259,7 @@ function length(numA, numB) {
   return Math.abs(numA - numB);
 }
 module.exports = exports["default"];
-//# sourceMappingURL=length.js.map
+
 });
 
 unwrapExports(length_1);
@@ -334,7 +334,7 @@ Object.defineProperty(exports, 'length', {
 });
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-//# sourceMappingURL=index.js.map
+
 });
 
 unwrapExports(utils);
@@ -503,7 +503,7 @@ function getPositionFromEvent(event, clientRect) {
 function getStepValueFromValue(value, valuePerStep) {
   return Math.round(value / valuePerStep) * valuePerStep;
 }
-//# sourceMappingURL=value-transformer.js.map
+
 });
 
 unwrapExports(valueTransformer);
@@ -542,7 +542,7 @@ var DEFAULT_CLASS_NAMES = {
 
 exports.default = DEFAULT_CLASS_NAMES;
 module.exports = exports['default'];
-//# sourceMappingURL=default-class-names.js.map
+
 });
 
 unwrapExports(defaultClassNames);
@@ -560,7 +560,7 @@ var _react2 = _interopRequireDefault(React__default);
 
 
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _propTypes2 = _interopRequireDefault(PropTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -599,7 +599,7 @@ Label.propTypes = {
   type: _propTypes2.default.string.isRequired
 };
 module.exports = exports['default'];
-//# sourceMappingURL=label.js.map
+
 });
 
 unwrapExports(label);
@@ -632,7 +632,7 @@ function rangePropType(props) {
   }
 }
 module.exports = exports['default'];
-//# sourceMappingURL=range-prop-type.js.map
+
 });
 
 unwrapExports(rangePropType_1);
@@ -670,7 +670,7 @@ function valuePropType(props, propName) {
   }
 }
 module.exports = exports['default'];
-//# sourceMappingURL=value-prop-type.js.map
+
 });
 
 unwrapExports(valuePropType_1);
@@ -692,7 +692,7 @@ var _react2 = _interopRequireDefault(React__default);
 
 
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _propTypes2 = _interopRequireDefault(PropTypes);
 
 
 
@@ -1072,7 +1072,7 @@ var Slider = (_class = function (_React$Component) {
 }(_react2.default.Component), (_applyDecoratedDescriptor(_class.prototype, 'handleMouseDown', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleMouseDown'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleMouseUp', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleMouseUp'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleMouseMove', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleMouseMove'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleTouchStart', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleTouchStart'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleTouchMove', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleTouchMove'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleTouchEnd', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleTouchEnd'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleKeyDown', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleKeyDown'), _class.prototype)), _class);
 exports.default = Slider;
 module.exports = exports['default'];
-//# sourceMappingURL=slider.js.map
+
 });
 
 unwrapExports(slider);
@@ -1094,7 +1094,7 @@ var _react2 = _interopRequireDefault(React__default);
 
 
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _propTypes2 = _interopRequireDefault(PropTypes);
 
 
 
@@ -1372,7 +1372,7 @@ var Track = (_class = function (_React$Component) {
 }(_react2.default.Component), (_applyDecoratedDescriptor(_class.prototype, 'handleMouseMove', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleMouseMove'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleMouseUp', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleMouseUp'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleMouseDown', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleMouseDown'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleTouchStart', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleTouchStart'), _class.prototype)), _class);
 exports.default = Track;
 module.exports = exports['default'];
-//# sourceMappingURL=track.js.map
+
 });
 
 unwrapExports(track);
@@ -1393,7 +1393,7 @@ var RIGHT_ARROW = exports.RIGHT_ARROW = 39;
 
 /** @ignore */
 var UP_ARROW = exports.UP_ARROW = 38;
-//# sourceMappingURL=key-codes.js.map
+
 });
 
 unwrapExports(keyCodes);
@@ -1419,7 +1419,7 @@ var _react2 = _interopRequireDefault(React__default);
 
 
 
-var _propTypes2 = _interopRequireDefault(_propTypes);
+var _propTypes2 = _interopRequireDefault(PropTypes);
 
 
 
@@ -2301,7 +2301,7 @@ var InputRange = (_class = function (_React$Component) {
 }(_react2.default.Component), (_applyDecoratedDescriptor(_class.prototype, 'handleSliderDrag', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleSliderDrag'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleTrackDrag', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleTrackDrag'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleSliderKeyDown', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleSliderKeyDown'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleTrackMouseDown', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleTrackMouseDown'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleInteractionStart', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleInteractionStart'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleInteractionEnd', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleInteractionEnd'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleKeyDown', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleKeyDown'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleKeyUp', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleKeyUp'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleMouseDown', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleMouseDown'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleMouseUp', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleMouseUp'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleTouchStart', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleTouchStart'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'handleTouchEnd', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'handleTouchEnd'), _class.prototype)), _class);
 exports.default = InputRange;
 module.exports = exports['default'];
-//# sourceMappingURL=input-range.js.map
+
 });
 
 unwrapExports(inputRange);
@@ -2363,7 +2363,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = _inputRange2.default;
 module.exports = exports['default'];
-//# sourceMappingURL=index.js.map
+
 });
 
 var InputRange = unwrapExports(js);
@@ -2457,6 +2457,13 @@ var MoneyButton = function (_PureComponent) {
 
     var _this = possibleConstructorReturn(this, (MoneyButton.__proto__ || Object.getPrototypeOf(MoneyButton)).call(this, props));
 
+    _this.onInputChange = function (e) {
+      var inputValue = e.target.value;
+
+      _this.setState({ inputValue: inputValue });
+      _this.props.onInputChange(inputValue);
+    };
+
     _this.stateRenderMap = {
       loading: function loading() {
         var loadingMessage = _this.props.loadingMessage;
@@ -2469,7 +2476,7 @@ var MoneyButton = function (_PureComponent) {
         );
       },
       success: function success() {
-        var currencyName = 'HK$';
+        var currencyName = _this.props.currency;
         var successMessagePrefix = _this.props.successMessagePrefix;
 
         var successTitle = successMessagePrefix + ' ' + currencyName + ' ';
@@ -2515,9 +2522,7 @@ var MoneyButton = function (_PureComponent) {
             type: 'numebr',
             className: 'value-input',
             value: _this.state.inputValue,
-            onChange: function onChange(e) {
-              return _this.setState({ inputValue: e.target.value });
-            }
+            onChange: _this.onInputChange
           })
         );
       }
@@ -2629,7 +2634,6 @@ var MoneyButton = function (_PureComponent) {
 
       var isDisabled = loading || success || error || !this.state.inputValue;
       var theme = this.getTheme();
-      console.log(this.state.inputValue, isDisabled);
 
       return React__default.createElement(
         'div',
@@ -2677,6 +2681,19 @@ MoneyButton.defaultProps = {
   onChange: function onChange() {},
   onInputChange: function onInputChange() {},
   currency: ''
+};
+MoneyButton.propTypes = {
+  loading: PropTypes.bool,
+  loadingMessage: PropTypes.string,
+  success: PropTypes.bool,
+  successMessagePrefix: PropTypes.string,
+  error: PropTypes.bool,
+  errorMessage: PropTypes.string,
+  onSlideComplete: PropTypes.func,
+  onReachEnd: PropTypes.func,
+  onChange: PropTypes.func,
+  onInputChange: PropTypes.func,
+  currency: PropTypes.string
 };
 
 module.exports = MoneyButton;
