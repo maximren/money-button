@@ -4,21 +4,38 @@ import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css';
 
 class MoneyButton extends PureComponent {
-  state = {
-    value: 0,
-    maxValue: 10,
-    inputValue: '',
-  };
+  static defaultProps = {
+    loading: false,
+    loadingMessage: 'Processing',
+    success: false,
+    successMessagePrefix: 'Paid',
+    error: false,
+    errorMessage: 'Try again',
+    onSlideComplete: () => {},
+    onChange: () => {},
+    currency: '',
+  }
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      value: 0,
+      maxValue: 10,
+      inputValue: '',
+    };
+  }
+
 
   stateRenderMap = {
-    loading: props => {
-      const { loadingMessage } = props;
+    loading: () => {
+      const { loadingMessage } = this.props;
 
       return <div className="loading-title">{loadingMessage}</div>;
     },
-    success: props => {
+    success: () => {
       const currencyName = 'HK$';
-      const { successMessagePrefix } = props;
+      const { successMessagePrefix } = this.props;
       const successTitle = `${successMessagePrefix} ${currencyName} `;
       const successValue = this.state.inputValue;
 
@@ -29,12 +46,12 @@ class MoneyButton extends PureComponent {
         </>
       );
     },
-    error: props => {
-      const { errorMessage } = props;
+    error: () => {
+      const { errorMessage } = this.props;
 
       return <div className="error-title">{errorMessage}</div>;
     },
-    default: props => {
+    default: () => {
       const currencyName = 'HK$';
 
       return (
@@ -55,8 +72,8 @@ class MoneyButton extends PureComponent {
     this.setState({ value })
   }
 
-  getTheme (props) {
-    const { loading, success, error } = props;
+  getTheme () {
+    const { loading, success, error } = this.props;
 
     if (loading) {
       return 'loading-theme';
@@ -81,7 +98,9 @@ class MoneyButton extends PureComponent {
     return '';
   }
 
-  getRenderContentMethod({ loading, success, error }) {
+  getRenderContentMethod() {
+    const { loading, success, error } = this.props;
+
     if (loading) {
       return this.stateRenderMap['loading'];
     }
@@ -97,7 +116,7 @@ class MoneyButton extends PureComponent {
     return this.stateRenderMap['default'];
   }
 
-  paidProccess = value => {
+  paidProccess = () => {
     if (this.state.value >= 9.5) {
       setTimeout(() => this.setState({ value: 0 }), 10);
       return;
@@ -105,16 +124,16 @@ class MoneyButton extends PureComponent {
     setTimeout(() => this.setState({ value: 0 }), 10);
   };
 
-  renderSliderContent(props) {
-    const renderContent = this.getRenderContentMethod(props);
+  renderSliderContent() {
+    const renderContent = this.getRenderContentMethod(this.props);
 
-    return <div className="value-input-container">{renderContent(props)}</div>;
+    return <div className="value-input-container">{renderContent()}</div>;
   }
 
-  renderSlider(props) {
-    const { loading, success, error } = props
+  renderSlider() {
+    const { loading, success, error } = this.props
     const isDisabled = loading || success || error;
-    const theme = this.getTheme(props);
+    const theme = this.getTheme();
 
     return (
       <div className={`slider-wrapper ${theme}`}>
@@ -134,23 +153,12 @@ class MoneyButton extends PureComponent {
   }
 
   render() {
-    const myProps = {
-      loading: false,
-      loadingMessage: 'Processing',
-      success: false,
-      successMessagePrefix: 'Paid',
-      error: false,
-      errorMessage: 'Try again',
-      onSlideComplete: console.log,
-      onChange: console.log,
-      currency: '',
-    };
-    const theme = this.getTheme(myProps);
+    const theme = this.getTheme();
 
     return (
       <div className={`money-button ${theme}`}>
-        {this.renderSliderContent(myProps)}
-        {this.renderSlider(myProps)}
+        {this.renderSliderContent()}
+        {this.renderSlider()}
       </div>
     );
   }
