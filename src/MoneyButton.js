@@ -73,6 +73,11 @@ class MoneyButton extends PureComponent {
     this.setState({ value });
   };
 
+  onChange = (value) => {
+    this.props.onChange(value)
+    this.setState({ value })
+  }
+
   getTheme() {
     const { loading, success, error } = this.props;
 
@@ -144,7 +149,7 @@ class MoneyButton extends PureComponent {
           minValue={0}
           formatLabel={() => ''}
           value={this.state.value}
-          onChange={value => this.setState({ value })}
+          onChange={this.onChange}
           onChangeComplete={this.paidProccess}
           draggableTrack={true}
           step={0.1}
