@@ -14,7 +14,9 @@ class MoneyButton extends PureComponent {
     error: false,
     errorMessage: 'Try again',
     onSlideComplete: () => {},
+    onReachEnd: () => {},
     onChange: () => {},
+    onInputChange: () => {},
     currency: '',
   };
 
@@ -123,8 +125,9 @@ class MoneyButton extends PureComponent {
   }
 
   paidProccess = () => {
-    this.props.onChangeComplete(this.state.value);
+    this.props.onSlideComplete(this.state.value);
     if (this.state.value >= 9.5) {
+      this.props.onReachEnd(this.state.value);
       setTimeout(() => this.setState({ value: 0 }), 10);
       return;
     }
@@ -139,8 +142,9 @@ class MoneyButton extends PureComponent {
 
   renderSlider() {
     const { loading, success, error } = this.props;
-    const isDisabled = loading || success || error;
+    const isDisabled = loading || success || error || !this.state.inputValue
     const theme = this.getTheme();
+    console.log(this.state.inputValue, isDisabled)
 
     return (
       <div className={`slider-wrapper ${theme}`}>

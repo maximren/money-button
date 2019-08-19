@@ -154,7 +154,14 @@
   }
 
   .empty-theme {
+    .input-range__track {
+      background-color: white;
+      width: 100%;
+      transition: none;
+    }
+
     .input-range__slider {
+      @extend .input-range__slider;
       opacity: 0.5;
     }
   }
