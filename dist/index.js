@@ -2460,7 +2460,6 @@ var MoneyButton = function (_PureComponent) {
     _this.onInputChange = function (e) {
       var inputValue = e.target.value;
 
-      _this.setState({ inputValue: inputValue });
       _this.props.onInputChange(inputValue);
     };
 
@@ -2480,7 +2479,7 @@ var MoneyButton = function (_PureComponent) {
         var successMessagePrefix = _this.props.successMessagePrefix;
 
         var successTitle = successMessagePrefix + ' ' + currencyName + ' ';
-        var successValue = _this.state.inputValue;
+        var successValue = _this.props.inputValue;
 
         return React__default.createElement(
           React__default.Fragment,
@@ -2521,7 +2520,7 @@ var MoneyButton = function (_PureComponent) {
           React__default.createElement('input', {
             type: 'numebr',
             className: 'value-input',
-            value: _this.state.inputValue,
+            value: _this.props.inputValue,
             onChange: _this.onInputChange
           })
         );
@@ -2529,18 +2528,14 @@ var MoneyButton = function (_PureComponent) {
     };
 
     _this.onSliderChange = function (value) {
-      _this.setState({ value: value });
-    };
-
-    _this.onChange = function (value) {
-      _this.props.onChange(value);
+      _this.props.onSliderChange(value);
       _this.setState({ value: value });
     };
 
     _this.paidProccess = function () {
       _this.props.onSlideComplete(_this.state.value);
       if (_this.state.value >= 9.5) {
-        _this.props.onReachEnd(_this.state.value);
+        _this.props.onSliderReachEnd(_this.state.value);
         setTimeout(function () {
           return _this.setState({ value: 0 });
         }, 10);
@@ -2553,8 +2548,7 @@ var MoneyButton = function (_PureComponent) {
 
     _this.state = {
       value: 0,
-      maxValue: 10,
-      inputValue: ''
+      maxValue: 10
     };
     return _this;
   }
@@ -2584,7 +2578,7 @@ var MoneyButton = function (_PureComponent) {
         return 'completed-theme';
       }
 
-      if (!this.state.inputValue) {
+      if (!this.props.inputValue) {
         return 'empty-theme';
       }
 
@@ -2632,7 +2626,7 @@ var MoneyButton = function (_PureComponent) {
           success = _props3.success,
           error = _props3.error;
 
-      var isDisabled = loading || success || error || !this.state.inputValue;
+      var isDisabled = loading || success || error || !this.props.inputValue;
       var theme = this.getTheme();
 
       return React__default.createElement(
@@ -2645,7 +2639,7 @@ var MoneyButton = function (_PureComponent) {
             return '';
           },
           value: this.state.value,
-          onChange: this.onChange,
+          onChange: this.onSliderChange,
           onChangeComplete: this.paidProccess,
           draggableTrack: true,
           step: 0.1,
@@ -2677,10 +2671,11 @@ MoneyButton.defaultProps = {
   error: false,
   errorMessage: 'Try again',
   onSlideComplete: function onSlideComplete() {},
-  onReachEnd: function onReachEnd() {},
-  onChange: function onChange() {},
+  onSliderReachEnd: function onSliderReachEnd() {},
+  onSliderChange: function onSliderChange() {},
   onInputChange: function onInputChange() {},
-  currency: ''
+  currency: '',
+  inputValue: ''
 };
 MoneyButton.propTypes = {
   loading: PropTypes.bool,
@@ -2690,10 +2685,11 @@ MoneyButton.propTypes = {
   error: PropTypes.bool,
   errorMessage: PropTypes.string,
   onSlideComplete: PropTypes.func,
-  onReachEnd: PropTypes.func,
-  onChange: PropTypes.func,
+  onSliderReachEnd: PropTypes.func,
+  onSliderChange: PropTypes.func,
   onInputChange: PropTypes.func,
-  currency: PropTypes.string
+  currency: PropTypes.string,
+  inputValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
 };
 
 module.exports = MoneyButton;

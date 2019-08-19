@@ -14,10 +14,11 @@ class MoneyButton extends PureComponent {
     error: false,
     errorMessage: 'Try again',
     onSlideComplete: () => {},
-    onReachEnd: () => {},
-    onChange: () => {},
+    onSliderReachEnd: () => {},
+    onSliderChange: () => {},
     onInputChange: () => {},
-    currency: ''
+    currency: '',
+    inputValue: ''
   };
 
   static propTypes = {
@@ -28,10 +29,11 @@ class MoneyButton extends PureComponent {
     error: PropTypes.bool,
     errorMessage: PropTypes.string,
     onSlideComplete: PropTypes.func,
-    onReachEnd: PropTypes.func,
-    onChange: PropTypes.func,
+    onSliderReachEnd: PropTypes.func,
+    onSliderChange: PropTypes.func,
     onInputChange: PropTypes.func,
-    currency: PropTypes.string
+    currency: PropTypes.string,
+    inputValue: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
   };
 
   constructor(props) {
@@ -39,15 +41,13 @@ class MoneyButton extends PureComponent {
 
     this.state = {
       value: 0,
-      maxValue: 10,
-      inputValue: ''
+      maxValue: 10
     }
   }
 
   onInputChange = e => {
     const inputValue = e.target.value
 
-    this.setState({ inputValue })
     this.props.onInputChange(inputValue)
   };
 
@@ -61,7 +61,7 @@ class MoneyButton extends PureComponent {
       const currencyName = this.props.currency
       const { successMessagePrefix } = this.props
       const successTitle = `${successMessagePrefix} ${currencyName} `
-      const successValue = this.state.inputValue
+      const successValue = this.props.inputValue
 
       return (
         <React.Fragment>
@@ -84,7 +84,7 @@ class MoneyButton extends PureComponent {
           <input
             type='numebr'
             className='value-input'
-            value={this.state.inputValue}
+            value={this.props.inputValue}
             onChange={this.onInputChange}
           />
         </React.Fragment>
@@ -93,11 +93,7 @@ class MoneyButton extends PureComponent {
   };
 
   onSliderChange = value => {
-    this.setState({ value })
-  };
-
-  onChange = value => {
-    this.props.onChange(value)
+    this.props.onSliderChange(value)
     this.setState({ value })
   };
 
@@ -120,7 +116,7 @@ class MoneyButton extends PureComponent {
       return 'completed-theme'
     }
 
-    if (!this.state.inputValue) {
+    if (!this.props.inputValue) {
       return 'empty-theme'
     }
 
@@ -148,7 +144,7 @@ class MoneyButton extends PureComponent {
   paidProccess = () => {
     this.props.onSlideComplete(this.state.value)
     if (this.state.value >= 9.5) {
-      this.props.onReachEnd(this.state.value)
+      this.props.onSliderReachEnd(this.state.value)
       setTimeout(() => this.setState({ value: 0 }), 10)
       return
     }
@@ -163,7 +159,7 @@ class MoneyButton extends PureComponent {
 
   renderSlider() {
     const { loading, success, error } = this.props
-    const isDisabled = loading || success || error || !this.state.inputValue
+    const isDisabled = loading || success || error || !this.props.inputValue
     const theme = this.getTheme()
 
     return (
@@ -173,7 +169,7 @@ class MoneyButton extends PureComponent {
           minValue={0}
           formatLabel={() => ''}
           value={this.state.value}
-          onChange={this.onChange}
+          onChange={this.onSliderChange}
           onChangeComplete={this.paidProccess}
           draggableTrack={true}
           step={0.1}
